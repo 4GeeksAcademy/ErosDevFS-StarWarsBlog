@@ -1,7 +1,8 @@
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import React from "react";
 import Card from "../components/Card.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
 
@@ -13,18 +14,43 @@ export const Home = () => {
 	getPeopleList()
   },[])
 
-function getPeopleList(){
-	fetch("https://www.swapi.tech/api")
-	.then(response=> response.json())
-	.then(data=> setPeopleList(data.results))
+async function getPeopleList(){
+
+	try{
+		const response = await 		
+		fetch("https://www.swapi.tech/api/people/")
+		const data = await response.json()
+		setPeopleList(data.results)
+		
+	} catch(error){
+		console.log(error)
+	}
+  }
+
+  async function peopleDetails(url){
+	
+	try{
+		const response = await 
+		fetch(url)
+		const data = await response.json()
+		dispatch({
+			type:"peopleDetails",
+			payload: data.result.properties
+		})
+	} catch(error){
+		console.log(error)
+	}
   }
 
 	return (
+
 		<div className="container mt-5">
 			<h1 className="" style={{color: "red"}}>Characters</h1>
-			{Map.peopleList((people) =>{
-				<Card name={people.name} hairColor="red" eyeColor="blue" gender="man"/>
-			})}
+			<div>
+				{peopleList.map(people=> <Card key={people.uid} name={people.name} hairColor="red" eyeColor="blue" gender="man"/>)}
+				
+
+			</div>
 		</div>
 	);
 }; 

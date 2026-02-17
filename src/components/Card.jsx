@@ -18,7 +18,7 @@ function Card({name, gender, hairColor, eyeColor}) {
                 
                 <div className="d-flex justify-content-between">
                     <a href="#" className="btn btn-outline-primary">Learn More!</a>
-                    <a href="#" className="btn btn-outline-warning"><i class="fa-regular fa-heart"></i></a>
+                    <a href="#" className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></a>
                 </div>
 
             </div>
