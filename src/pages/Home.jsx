@@ -27,30 +27,17 @@ async function getPeopleList(){
 	}
   }
 
-  async function peopleDetails(url){
-	
-	try{
-		const response = await 
-		fetch(url)
-		const data = await response.json()
-		dispatch({
-			type:"peopleDetails",
-			payload: data.result.properties
-		})
-	} catch(error){
-		console.log(error)
-	}
-  }
+
 
 	return (
-
+	
 		<div className="container mt-5">
-			<h1 className="" style={{color: "red"}}>Characters</h1>
-			<div>
+			<h1 className="mb-5" style={{color: "red"}}>Characters</h1>
+			<div className="row flex-nowrap overflow-x-scroll gap-5">
 				{peopleList.map(people=> <Card key={people.uid} name={people.name} hairColor="red" eyeColor="blue" gender="man"/>)}
 				
-
 			</div>
 		</div>
+
 	);
 }; 

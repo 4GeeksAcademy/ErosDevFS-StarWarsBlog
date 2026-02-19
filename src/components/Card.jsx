@@ -1,7 +1,12 @@
 import React from "react"
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 function Card({name, gender, hairColor, eyeColor}) {
+
+    const {store, dispatch} =useGlobalReducer()
+    
+
     return (
         <div className="card" style={{ width:"400px" }}>
             <img src={rigoImageUrl} className="card-img-top" style={{ width:"400px", height: "200px" }} alt="..." />
@@ -18,7 +23,10 @@ function Card({name, gender, hairColor, eyeColor}) {
                 
                 <div className="d-flex justify-content-between">
                     <a href="#" className="btn btn-outline-primary">Learn More!</a>
-                    <a href="#" className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></a>
+                    <button href="#" onClick={()=> dispatch({
+					type: 'add_peopleFavorites',
+					payload: name
+				})} className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></button>
                 </div>
 
             </div>
