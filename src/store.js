@@ -30,11 +30,11 @@ export default function storeReducer(store, action = {}) {
         todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
       };
     case 'add_peopleFavorites':
-      
+
       let updatePeopleFavorites = []
-      if(store.peopleFavorites.includes(action.payload)){
+      if (store.peopleFavorites.includes(action.payload)) {
         updatePeopleFavorites = store.peopleFavorites.filter(person => person !== action.payload)
-      } else{
+      } else {
         updatePeopleFavorites = [...store.peopleFavorites, action.payload]
       }
 
@@ -43,12 +43,12 @@ export default function storeReducer(store, action = {}) {
         peopleFavorites: updatePeopleFavorites
       };
 
-     case 'add_planetsFavorites':
-      
+    case 'add_planetsFavorites':
+
       let updatePlanetsFavorites = []
-      if(store.planetsFavorites.includes(action.payload)){
+      if (store.planetsFavorites.includes(action.payload)) {
         updatePlanetsFavorites = store.planetsFavorites.filter(planet => planet !== action.payload)
-      } else{
+      } else {
         updatePlanetsFavorites = [...store.planetsFavorites, action.payload]
       }
 
@@ -57,12 +57,12 @@ export default function storeReducer(store, action = {}) {
         planetsFavorites: updatePlanetsFavorites
       };
 
-      case 'add_vehiclesFavorites':
-      
+    case 'add_vehiclesFavorites':
+
       let updateVehiclesFavorites = []
-      if(store.vehiclesFavorites.includes(action.payload)){
+      if (store.vehiclesFavorites.includes(action.payload)) {
         updateVehiclesFavorites = store.vehiclesFavorites.filter(vehicle => vehicle !== action.payload)
-      } else{
+      } else {
         updateVehiclesFavorites = [...store.vehiclesFavorites, action.payload]
       }
 

@@ -1,0 +1,15 @@
+
+.fav-btn.active {
+    background-color: white !important;
+
+}
+
+.fa-heart:hover{
+    color: #111;
+
+}
+
+
+.fav-btn.active i {
+  color: #ffc107
+}
