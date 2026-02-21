@@ -1,8 +1,9 @@
 import React from "react"
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { Link } from "react-router-dom";
 
-function Card({name, gender, hairColor, eyeColor}) {
+function CardPeople(props) {
 
     const {store, dispatch} =useGlobalReducer()
     
@@ -11,21 +12,21 @@ function Card({name, gender, hairColor, eyeColor}) {
         <div className="card" style={{ width:"400px" }}>
             <img src={rigoImageUrl} className="card-img-top" style={{ width:"400px", height: "200px" }} alt="..." />
             <div className="card-body">
-                <h5 className="card-title">{name}</h5>
+                <h5 className="card-title">{props.name}</h5>
                 <div className="card-text">
-                    <p>Gender: {gender}
+                    <p>Gender: {props.gender}
                     <br/> 
-                    Hair Color: {hairColor}
+                    Hair Color: {props.hairColor}
                     <br/> 
-                    Eye-Color: {eyeColor} 
+                    Eye-Color: {props.eyeColor} 
                     </p>
                 </div>
                 
                 <div className="d-flex justify-content-between">
-                    <a href="#" className="btn btn-outline-primary">Learn More!</a>
+                    <Link to={"/people/"+props.uid} className="btn btn-outline-primary">Learn More!</Link>
                     <button href="#" onClick={()=> dispatch({
 					type: 'add_peopleFavorites',
-					payload: name
+					payload: props.name
 				})} className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></button>
                 </div>
 
@@ -34,4 +35,4 @@ function Card({name, gender, hairColor, eyeColor}) {
     )
 }
 
-export default Card
+export default CardPeople

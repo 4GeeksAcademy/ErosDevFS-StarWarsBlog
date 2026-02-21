@@ -16,7 +16,7 @@ export const Navbar = () => {
 				
 					<div className="btn-group" role="group">
 						<button className="btn btn-primary dropdown-toggle px-4 py-2" data-bs-toggle="dropdown" aria-expanded="false">
-							Favorites <span className="bg-secondary px-1">{store.peopleFavorites.length}</span>
+							Favorites <span className="bg-secondary px-1">{store.peopleFavorites.length + store.planetsFavorites.length + store.vehiclesFavorites.length}</span>
 						</button>
 						<ul className="dropdown-menu">
 							{store.peopleFavorites.map((people, index)=>{
@@ -26,6 +26,19 @@ export const Navbar = () => {
 								})} className="me-2" style={{backgroundColor: "white", border: "none"}}><i className="fa-solid fa-trash"></i></button></div> 
 							})}
 							
+							{store.planetsFavorites.map((planet, index)=>{
+								return <div key={index}  className="d-flex justify-content-between"><li className="dropdown-item">{planet}</li> <button onClick={()=>dispatch({
+									type: 'add_planetsFavorites',
+									payload: planet
+								})} className="me-2" style={{backgroundColor: "white", border: "none"}}><i className="fa-solid fa-trash"></i></button></div> 
+							})}
+
+							{store.vehiclesFavorites.map((vehicle, index)=>{
+								return <div key={index}  className="d-flex justify-content-between"><li className="dropdown-item">{vehicle}</li> <button onClick={()=>dispatch({
+									type: 'add_vehiclesFavorites',
+									payload: vehicle
+								})} className="me-2" style={{backgroundColor: "white", border: "none"}}><i className="fa-solid fa-trash"></i></button></div> 
+							})}
 						</ul>
 					</div>
 				

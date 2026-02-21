@@ -13,7 +13,9 @@ export const initialStore = () => {
         background: null,
       }
     ],
-    peopleFavorites: []
+    peopleFavorites: [],
+    planetsFavorites: [],
+    vehiclesFavorites: []
   }
 }
 
@@ -29,16 +31,44 @@ export default function storeReducer(store, action = {}) {
       };
     case 'add_peopleFavorites':
       
-      let updateFavorites = []
+      let updatePeopleFavorites = []
       if(store.peopleFavorites.includes(action.payload)){
-        updateFavorites = store.peopleFavorites.filter(person => person !== action.payload)
+        updatePeopleFavorites = store.peopleFavorites.filter(person => person !== action.payload)
       } else{
-        updateFavorites = [...store.peopleFavorites, action.payload]
+        updatePeopleFavorites = [...store.peopleFavorites, action.payload]
       }
 
       return {
         ...store,
-        peopleFavorites: updateFavorites
+        peopleFavorites: updatePeopleFavorites
+      };
+
+     case 'add_planetsFavorites':
+      
+      let updatePlanetsFavorites = []
+      if(store.planetsFavorites.includes(action.payload)){
+        updatePlanetsFavorites = store.planetsFavorites.filter(planet => planet !== action.payload)
+      } else{
+        updatePlanetsFavorites = [...store.planetsFavorites, action.payload]
+      }
+
+      return {
+        ...store,
+        planetsFavorites: updatePlanetsFavorites
+      };
+
+      case 'add_vehiclesFavorites':
+      
+      let updateVehiclesFavorites = []
+      if(store.vehiclesFavorites.includes(action.payload)){
+        updateVehiclesFavorites = store.vehiclesFavorites.filter(vehicle => vehicle !== action.payload)
+      } else{
+        updateVehiclesFavorites = [...store.vehiclesFavorites, action.payload]
+      }
+
+      return {
+        ...store,
+        vehiclesFavorites: updateVehiclesFavorites
       };
 
     default:
